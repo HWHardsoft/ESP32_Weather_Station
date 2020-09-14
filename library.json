@@ -4,7 +4,7 @@
   "description": "A WiFi connected information display",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hwhardsoft/esp32-weather-station"
+    "url": "https://github.com/HWHardsoft/ESP32_Weather_Station"
   },
   "authors": {
     "name": "Zihatec",
