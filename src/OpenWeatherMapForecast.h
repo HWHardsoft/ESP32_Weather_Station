@@ -62,6 +62,8 @@ typedef struct OpenWeatherMapForecastData {
   float windSpeed;
   //   "deg":207.501
   float windDeg;
+  // "pop:" 0.32,
+  float pop;
   // rain: {3h: 0.055},
   float rain;
   // },"sys":{"pod":"d"}
