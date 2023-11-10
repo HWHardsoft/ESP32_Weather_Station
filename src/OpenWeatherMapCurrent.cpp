@@ -164,7 +164,6 @@ void OpenWeatherMapCurrent::value(String value) {
   if (currentKey == "deg") {
     this->data->windDeg = value.toFloat();
   }
-  }
     // "wind": {"gust": 1.18}, float windGust;
   if (currentKey == "gust") {
     this->data->windGust = value.toFloat();
