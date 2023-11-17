@@ -197,6 +197,10 @@ void OpenWeatherMapForecast::value(String value) {
   if (currentKey == "deg") {
     data[currentForecast].windDeg = value.toFloat();
   }
+  //   "pop":0.04,
+  if (currentKey == "pop") {
+    data[currentForecast].pop = value.toFloat();
+  }  
   // rain: {3h: 0.055}, float rain;
   if (currentKey == "3h") {
     data[currentForecast].rain = value.toFloat();
