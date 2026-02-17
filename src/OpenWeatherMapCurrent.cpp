@@ -30,6 +30,10 @@ OpenWeatherMapCurrent::OpenWeatherMapCurrent() {
 
 }
 
+OpenWeatherMapCurrent::~OpenWeatherMapCurrent() {
+
+}
+
 void OpenWeatherMapCurrent::updateCurrent(OpenWeatherMapCurrentData *data, String appId, String location) {
   doUpdate(data, buildUrl(appId, "q=" + location));
 }

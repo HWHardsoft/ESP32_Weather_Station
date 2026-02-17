@@ -85,6 +85,7 @@ class OpenWeatherMapCurrent: public JsonListener {
 
   public:
     OpenWeatherMapCurrent();
+    virtual ~OpenWeatherMapCurrent();
     void updateCurrent(OpenWeatherMapCurrentData *data, String appId, String location);
     void updateCurrentById(OpenWeatherMapCurrentData *data, String appId, String locationId);
 

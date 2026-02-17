@@ -91,6 +91,7 @@ class OpenWeatherMapForecast: public JsonListener {
 
   public:
     OpenWeatherMapForecast();
+    virtual ~OpenWeatherMapForecast();
     uint8_t updateForecasts(OpenWeatherMapForecastData *data, String appId, String location, uint8_t maxForecasts);
     uint8_t updateForecastsById(OpenWeatherMapForecastData *data, String appId, String locationId, uint8_t maxForecasts);
 

@@ -30,6 +30,10 @@ OpenWeatherMapForecast::OpenWeatherMapForecast() {
 
 }
 
+OpenWeatherMapForecast::~OpenWeatherMapForecast() {
+
+}
+
 uint8_t OpenWeatherMapForecast::updateForecasts(OpenWeatherMapForecastData *data, String appId, String location, uint8_t maxForecasts) {
   this->maxForecasts = maxForecasts;
   return doUpdate(data, buildUrl(appId, "q=" + location));
