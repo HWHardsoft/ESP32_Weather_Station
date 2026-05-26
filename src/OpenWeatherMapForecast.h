@@ -62,6 +62,8 @@ typedef struct OpenWeatherMapForecastData {
   float windSpeed;
   //   "deg":207.501
   float windDeg;
+  // "pop:" 0.32,
+  float pop;
   // rain: {3h: 0.055},
   float rain;
   // },"sys":{"pod":"d"}
@@ -89,6 +91,7 @@ class OpenWeatherMapForecast: public JsonListener {
 
   public:
     OpenWeatherMapForecast();
+    virtual ~OpenWeatherMapForecast();
     uint8_t updateForecasts(OpenWeatherMapForecastData *data, String appId, String location, uint8_t maxForecasts);
     uint8_t updateForecastsById(OpenWeatherMapForecastData *data, String appId, String locationId, uint8_t maxForecasts);
 

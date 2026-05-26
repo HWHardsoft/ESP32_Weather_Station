@@ -30,6 +30,10 @@ OpenWeatherMapForecast::OpenWeatherMapForecast() {
 
 }
 
+OpenWeatherMapForecast::~OpenWeatherMapForecast() {
+
+}
+
 uint8_t OpenWeatherMapForecast::updateForecasts(OpenWeatherMapForecastData *data, String appId, String location, uint8_t maxForecasts) {
   this->maxForecasts = maxForecasts;
   return doUpdate(data, buildUrl(appId, "q=" + location));
@@ -68,7 +72,7 @@ uint8_t OpenWeatherMapForecast::doUpdate(OpenWeatherMapForecastData *data, Strin
 
     WiFiClient * client = http.getStreamPtr();
 
-    while(client->connected() || client->available()) {
+    while(client->connected() && client->available()) {
       while((size = client->available()) > 0) {
 		if ((millis() - lost_do) > lostTest) {
 			Serial.println ("lost in client with a timeout");
@@ -197,6 +201,10 @@ void OpenWeatherMapForecast::value(String value) {
   if (currentKey == "deg") {
     data[currentForecast].windDeg = value.toFloat();
   }
+  //   "pop":0.04,
+  if (currentKey == "pop") {
+    data[currentForecast].pop = value.toFloat();
+  }  
   // rain: {3h: 0.055}, float rain;
   if (currentKey == "3h") {
     data[currentForecast].rain = value.toFloat();

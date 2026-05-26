@@ -55,6 +55,8 @@ typedef struct OpenWeatherMapCurrentData {
   float windSpeed;
   // "wind": {deg: 226.505},
   float windDeg;
+  // "wind": {"gust": 1.18},
+  float windGust;											 
   // "clouds": {"all": 90},
   uint8_t clouds;
   // "dt": 1527015000,
@@ -83,6 +85,7 @@ class OpenWeatherMapCurrent: public JsonListener {
 
   public:
     OpenWeatherMapCurrent();
+    virtual ~OpenWeatherMapCurrent();
     void updateCurrent(OpenWeatherMapCurrentData *data, String appId, String location);
     void updateCurrentById(OpenWeatherMapCurrentData *data, String appId, String locationId);
 

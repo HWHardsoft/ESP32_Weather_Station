@@ -30,6 +30,10 @@ OpenWeatherMapCurrent::OpenWeatherMapCurrent() {
 
 }
 
+OpenWeatherMapCurrent::~OpenWeatherMapCurrent() {
+
+}
+
 void OpenWeatherMapCurrent::updateCurrent(OpenWeatherMapCurrentData *data, String appId, String location) {
   doUpdate(data, buildUrl(appId, "q=" + location));
 }
@@ -65,7 +69,7 @@ void OpenWeatherMapCurrent::doUpdate(OpenWeatherMapCurrentData *data, String url
 
     WiFiClient * client = http.getStreamPtr();
 
-    while(client->connected() || client->available()) {
+    while(client->connected() && client->available()) {
       while((size = client->available()) > 0) {
 		if ((millis() - lost_do) > lostTest) {
 			Serial.println ("lost in client with a timeout");
@@ -164,7 +168,11 @@ void OpenWeatherMapCurrent::value(String value) {
   if (currentKey == "deg") {
     this->data->windDeg = value.toFloat();
   }
-  // "clouds": {"all": 90}, uint8_t clouds;
+    // "wind": {"gust": 1.18}, float windGust;
+  if (currentKey == "gust") {
+    this->data->windGust = value.toFloat();
+  }								  
+   // "clouds": {"all": 90}, uint8_t clouds;
   if (currentKey == "all") {
     this->data->clouds = value.toInt();
   }
